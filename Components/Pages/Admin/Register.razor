@@ -1,0 +1,90 @@
+﻿@page "/admin/register"
+@using MyOwnPortfolio.Model
+@layout MyOwnPortfolio.Components.Layout.AdminLoginLayout
+
+<PageTitle>Register</PageTitle>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-7">
+            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                <div class="card-header"><h3 class="text-center font-weight-light my-4">Create Account</h3></div>
+                <div class="card-body">
+                   <EditForm Model="@registrationModel" OnValidSubmit="@HandleRegistration">
+                        <DataAnnotationsValidator />
+                        <ValidationSummary />
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3 mb-md-0">
+                                    <InputText id="FirstName" class="form-control" @bind-Value="registrationModel.FirstName" placeholder="Enter your first name" />
+                                    <ValidationMessage For="@(() => registrationModel.FirstName)" />
+                                    <label for="FirstName">FirstName:</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+
+                                    <InputText id="LastName" class="form-control" @bind-Value="registrationModel.LastName" placeholder="Enter your last name" />
+                                    <ValidationMessage For="@(() => registrationModel.LastName)" />
+                                    <label for="LastName">LastName:</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <InputText id="Email" class="form-control" @bind-Value="registrationModel.Email" placeholder="name@example.com" />
+                            <ValidationMessage For="@(() => registrationModel.Email)" />
+                            <label for="Email">Email:</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <InputText id="Username" class="form-control" @bind-Value="registrationModel.Username" placeholder="Username" />
+                            <ValidationMessage For="@(() => registrationModel.Username)" />
+                            <label for="Email">Username:</label>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3 mb-md-0">
+                                    <InputText id="password" class="form-control" @bind-Value="registrationModel.Password" type="password" placeholder="Create a password" />
+                                    <ValidationMessage For="@(() => registrationModel.Password)" />
+                                    <label for="password">Password:</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3 mb-md-0">
+
+                                    <InputText id="ConfirmPassword" class="form-control" @bind-Value="registrationModel.ConfirmPassword" type="password" placeholder="Create a ConfirmPassword" />
+                                    <ValidationMessage For="@(() => registrationModel.ConfirmPassword)" />
+                                    <label for="password">Confirm Password:</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <InputText id="ContactNumber" class="form-control" @bind-Value="registrationModel.ContactNumber" placeholder="ContactNumber" />
+                            <ValidationMessage For="@(() => registrationModel.ContactNumber)" />
+                            <label for="ContactNumber">ContactNumber:</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <InputText id="Linkedin" class="form-control" @bind-Value="registrationModel.Linkedin" placeholder="Enter your linkedin url " />
+                            <ValidationMessage For="@(() => registrationModel.Linkedin)" />
+                            <label for="Email">Linkedin:</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <InputText id="Github" class="form-control" @bind-Value="registrationModel.Github" placeholder="Enter your Github url " />
+                            <ValidationMessage For="@(() => registrationModel.Github)" />
+                            <label for="Email">Github:</label>
+                        </div>
+                        <div class="mt-4 mb-0">
+                            <div class="d-grid"><button class="btn btn-primary btn-block" type="submit">Create Account</button></div>
+                        </div>
+                   </EditForm>
+                </div>
+                <div class="card-footer text-center py-3">
+                    <div class="small"><a href="/admin/login">Have an account? Go to login</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@code {
+
+}

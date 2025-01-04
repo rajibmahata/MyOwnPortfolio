@@ -1,6 +1,48 @@
-﻿<Router AppAssembly="typeof(Program).Assembly">
+﻿@using MyOwnPortfolio.Services
+@* <Router AppAssembly="typeof(Program).Assembly">
     <Found Context="routeData">
         <RouteView RouteData="routeData" DefaultLayout="typeof(Layout.MyPortfolioLayout)" />
         <FocusOnNavigate RouteData="routeData" Selector="h1" />
     </Found>
-</Router>
+</Router> *@
+
+
+@inject LayoutService LayoutService
+
+<CascadingValue Value="CurrentLayout">
+    <Router AppAssembly="@typeof(App).Assembly">
+        <Found Context="routeData">
+            <LayoutView Layout="@CurrentLayout">
+                <RouteView RouteData="@routeData" DefaultLayout="@typeof(Layout.MyPortfolioLayout)" />
+            </LayoutView>
+        </Found>
+        <NotFound>
+            <LayoutView Layout="@typeof(Layout.MyPortfolioLayout)">
+                <h1>Page Not Found</h1>
+            </LayoutView>
+        </NotFound>
+    </Router>
+</CascadingValue>
+
+
+@code {
+   
+    private Type CurrentLayout = typeof(Layout.MyPortfolioLayout);
+
+    protected override void OnInitialized()
+    {
+        LayoutService.OnLayoutChanged += HandleLayoutChange;
+    }
+
+    private void HandleLayoutChange(Type layoutType)
+    {
+        CurrentLayout = layoutType;
+        StateHasChanged();
+    }
+
+    public void Dispose()
+    {
+        LayoutService.OnLayoutChanged -= HandleLayoutChange;
+    }
+
+}

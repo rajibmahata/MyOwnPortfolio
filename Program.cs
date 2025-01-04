@@ -1,10 +1,15 @@
+using Microsoft.AspNetCore.Components.Web;
 using MyOwnPortfolio.Components;
+using MyOwnPortfolio.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+
+
+builder.Services.AddScoped<LayoutService>();
 
 var app = builder.Build();
 
@@ -20,6 +25,7 @@ app.UseHttpsRedirection();
 
 app.UseStaticFiles();
 app.UseAntiforgery();
+app.MapBlazorHub();
 
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();

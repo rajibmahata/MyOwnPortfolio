@@ -13,14 +13,16 @@ namespace MyOwnPortfolio.Components.Pages.Admin
         [Inject] ApiService apiService { get; set; }
         [Inject] NavigationManager _navigationManager { get; set; }
         [Inject] CustomAuthenticationStateProvider customAuthenticationState { get; set; }
-
+       
+        private bool isDisposed = false;
 
         private RegistrationModel registrationModel = new RegistrationModel();
 
         protected override void OnInitialized()
         {
             LayoutService.ChangeLayout(typeof(Layout.AdminLoginLayout));
-           
+            isDisposed = false;
+            base.OnInitialized();
         }
 
 
@@ -28,6 +30,8 @@ namespace MyOwnPortfolio.Components.Pages.Admin
         {
             try
             {
+                if (isDisposed) return;
+
                 var response = await apiService.PostAsync<MyPortal>("api/Auth/register", registrationModel);
                 if (response != null)
                 {
@@ -42,6 +46,11 @@ namespace MyOwnPortfolio.Components.Pages.Admin
 
                 throw;
             }
+        }
+
+        public void Dispose()
+        {
+            isDisposed = true;
         }
     }
 }

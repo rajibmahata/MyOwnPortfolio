@@ -13,6 +13,7 @@ namespace MyOwnPortfolio.Components.Pages.Admin
         protected override void OnInitialized()
         {
             LayoutService.ChangeLayout(typeof(Layout.AdminLoginLayout));
+            StateHasChanged();
         }
 
 

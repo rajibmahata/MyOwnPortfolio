@@ -10,6 +10,18 @@ builder.Services.AddRazorComponents()
 
 
 builder.Services.AddScoped<LayoutService>();
+builder.Services.AddHttpClient<ApiService>(client =>
+{
+    client.BaseAddress = new Uri("https://localhost:7044/");
+});
+
+builder.Services.AddScoped<CustomAuthenticationStateProvider>();
+
+builder.Services.AddLogging(logging =>
+{
+    logging.AddConsole();
+    logging.SetMinimumLevel(LogLevel.Debug);
+});
 
 var app = builder.Build();
 

@@ -10,7 +10,7 @@
             <div class="card shadow-lg border-0 rounded-lg mt-5">
                 <div class="card-header"><h3 class="text-center font-weight-light my-4">Create Account</h3></div>
                 <div class="card-body">
-                   <EditForm Model="@registrationModel" OnValidSubmit="@HandleRegistration">
+                    <EditForm Model="@registrationModel" OnValidSubmit="@HandleRegistration" FormName="@("registration")">
                         <DataAnnotationsValidator />
                         <ValidationSummary />
 
@@ -64,17 +64,17 @@
                             <label for="ContactNumber">ContactNumber:</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <InputText id="Linkedin" class="form-control" @bind-Value="registrationModel.Linkedin" placeholder="Enter your linkedin url " />
+                            <InputText id="txtLinkedin" class="form-control" @bind-Value="registrationModel.Linkedin" placeholder="Enter your linkedin url " />
                             <ValidationMessage For="@(() => registrationModel.Linkedin)" />
                             <label for="Email">Linkedin:</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <InputText id="Github" class="form-control" @bind-Value="registrationModel.Github" placeholder="Enter your Github url " />
+                            <InputText id="txtGithub" class="form-control" @bind-Value="registrationModel.Github" placeholder="Enter your Github url " />
                             <ValidationMessage For="@(() => registrationModel.Github)" />
                             <label for="Email">Github:</label>
                         </div>
                         <div class="mt-4 mb-0">
-                            <div class="d-grid"><button class="btn btn-primary btn-block" type="submit">Create Account</button></div>
+                            <div class="d-grid"><button class="btn btn-primary btn-block" type="submit" id="btncreateaccount">Create Account</button></div>
                         </div>
                    </EditForm>
                 </div>

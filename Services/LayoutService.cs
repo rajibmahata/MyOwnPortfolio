@@ -7,6 +7,7 @@
         public void ChangeLayout(Type newLayout)
         {
             OnLayoutChanged?.Invoke(newLayout);
+
         }
     }
 }

@@ -14,12 +14,13 @@ namespace MyOwnPortfolio.Components.Pages.Admin
         [Inject] NavigationManager _navigationManager { get; set; }
         [Inject] CustomAuthenticationStateProvider customAuthenticationState { get; set; }
 
-        [SupplyParameterFromForm]
-        public RegistrationModel registrationModel { get; set; }
+
+        private RegistrationModel registrationModel = new RegistrationModel();
+
         protected override void OnInitialized()
         {
             LayoutService.ChangeLayout(typeof(Layout.AdminLoginLayout));
-            registrationModel = new RegistrationModel();
+           
         }
 
 

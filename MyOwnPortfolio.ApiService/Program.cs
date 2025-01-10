@@ -22,9 +22,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc(" MyOwnPortfolio API service v1", new Microsoft.OpenApi.Models.OpenApiInfo
+    c.SwaggerDoc("MyOwnPortfolio API service v1", new Microsoft.OpenApi.Models.OpenApiInfo
     {
-        Version = "v1",
+        Version = "V1",
         Title = "MyOwnPortfolio API",
         Description = "An ASP.NET Core Web API for managing MyOwnPortfolio",
         TermsOfService = new Uri("https://example.com/terms"),
@@ -40,6 +40,9 @@ builder.Services.AddSwaggerGen(c =>
         //}
     });
 
+    var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+    c.IncludeXmlComments(xmlPath);
 
     // Enable Swagger examples
     c.EnableAnnotations();
@@ -73,12 +76,18 @@ using (var scope = app.Services.CreateScope())
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+    app.UseDeveloperExceptionPage();
     app.UseSwagger();
     // app.UseSwaggerUI();
     app.UseSwaggerUI(options => // UseSwaggerUI is called only in Development.
     {
-       // options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+        options.SwaggerEndpoint("/swagger/v1/swagger.json", "MyOwnPortfolio API V1");
         options.RoutePrefix = string.Empty;
+
+    });
+    app.UseSwagger(options =>
+    {
+        options.SerializeAsV2 = true;
     });
 }
 
@@ -87,6 +96,7 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
+app.UseRouting();
 app.MapControllers();
 
 // Configure the HTTP request pipeline.

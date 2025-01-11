@@ -19,37 +19,32 @@ builder.Services.AddProblemDetails();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("MyOwnPortfolio API service v1", new Microsoft.OpenApi.Models.OpenApiInfo
+    c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
     {
-        Version = "V1",
+        Version = "v1",
         Title = "MyOwnPortfolio API",
         Description = "An ASP.NET Core Web API for managing MyOwnPortfolio",
-        TermsOfService = new Uri("https://example.com/terms"),
-        //Contact = new OpenApiContact
-        //{
-        //    Name = "Example Contact",
-        //    Url = new Uri("https://example.com/contact")
-        //},
-        //License = new OpenApiLicense
-        //{
-        //    Name = "Example License",
-        //    Url = new Uri("https://example.com/license")
-        //}
+
     });
+    // Register the ExamplesOperationFilter
+   // c.OperationFilter<ExamplesOperationFilter>();
+    c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First()); //This line
 
-    var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-    c.IncludeXmlComments(xmlPath);
+    //var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    //var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+    //c.IncludeXmlComments(xmlPath);
 
-    // Enable Swagger examples
+    //Enable Swagger examples
     c.EnableAnnotations();
     c.ExampleFilters();
 });
 
+// Register Swashbuckle Filters
 builder.Services.AddSwaggerExamplesFromAssemblies(Assembly.GetExecutingAssembly());
+
+
 //Global Exception Handling
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 builder.Services.AddProblemDetails();
@@ -61,9 +56,7 @@ builder.Services.AddDbContext<MyPortfolioDbContext>(options =>
            .ConfigureWarnings(warnings => warnings.Ignore(RelationalEventId.PendingModelChangesWarning)));
 
 
-
 var app = builder.Build();
-
 
 // Ensure the database is created
 using (var scope = app.Services.CreateScope())
@@ -78,16 +71,16 @@ if (app.Environment.IsDevelopment())
     app.UseDeveloperExceptionPage();
     app.UseSwagger();
     // app.UseSwaggerUI();
+
     app.UseSwaggerUI(options => // UseSwaggerUI is called only in Development.
     {
-        options.SwaggerEndpoint("/swagger/v1/swagger.json", "MyOwnPortfolio API V1");
+        options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
         options.RoutePrefix = string.Empty;
-
     });
-    app.UseSwagger(options =>
-    {
-        options.SerializeAsV2 = true;
-    });
+    //app.UseSwagger(options =>
+    //{
+    //    options.SerializeAsV2 = true;
+    //});
 }
 
 
@@ -96,10 +89,16 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.UseRouting();
-app.MapControllers();
+//app.MapControllers();
 
 // Configure the HTTP request pipeline.
 app.UseExceptionHandler();
+
+app.MapDefaultEndpoints();
+
+app.Run();
+
+
 
 //string[] summaries = ["Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"];
 
@@ -116,10 +115,6 @@ app.UseExceptionHandler();
 //    return forecast;
 //})
 //.WithName("GetWeatherForecast");
-
-app.MapDefaultEndpoints();
-
-app.Run();
 
 //record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
 //{

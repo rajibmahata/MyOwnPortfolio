@@ -62,7 +62,6 @@ builder.Services.AddDbContext<MyPortfolioDbContext>(options =>
 
 
 
-
 var app = builder.Build();
 
 

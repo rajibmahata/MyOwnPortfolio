@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace MyOwnPortfolio.ApiService.Models.RequestResponseModel
+namespace MyOwnPortfolio.Web.Models.RequestResponseModels
 {
     /// <summary>
     /// Represents the base response model for API responses.

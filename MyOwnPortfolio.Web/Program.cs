@@ -1,5 +1,6 @@
 using MyOwnPortfolio.Web;
 using MyOwnPortfolio.Web.Components;
+using MyOwnPortfolio.Web.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +18,10 @@ builder.Services.AddHttpClient<WeatherApiClient>(client =>
         // Learn more about service discovery scheme resolution at https://aka.ms/dotnet/sdschemes.
         client.BaseAddress = new("https+http://apiservice");
     });
+
+// Register HttpClient and ApiClient
+builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://localhost:7301") });
+builder.Services.AddScoped<AuthAPIClient>();
 
 var app = builder.Build();
 

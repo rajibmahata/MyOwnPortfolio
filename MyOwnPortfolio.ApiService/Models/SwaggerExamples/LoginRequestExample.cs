@@ -1,4 +1,4 @@
-﻿using MyOwnPortfolio.ApiService.Models.RequestResponseModel;
+﻿using MyOwnPortfolio.ApiService.Models.RequestResponseModels;
 
 namespace MyOwnPortfolio.ApiService.Models.SwaggerExamples
 {

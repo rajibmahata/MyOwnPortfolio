@@ -1,4 +1,4 @@
-﻿namespace MyOwnPortfolio.ApiService.Models.RequestResponseModel
+﻿namespace MyOwnPortfolio.ApiService.Models.RequestResponseModels
 {
     /// <summary>
     /// Model for user registration request.

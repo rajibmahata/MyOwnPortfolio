@@ -1,8 +1,5 @@
-﻿using MyOwnPortfolio.ApiService.Models;
-using MyOwnPortfolio.ApiService.Models.RequestResponseModel;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace MyOwnPortfolio.ApiService.Entities.RequestModel
+﻿
+namespace MyOwnPortfolio.Web.Models.RequestResponseModels
 {
     /// <summary>
     /// Represents the response model for a login request.

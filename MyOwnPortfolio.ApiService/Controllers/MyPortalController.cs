@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MyOwnPortfolio.ApiService.Entities;
-using MyOwnPortfolio.ApiService.Models.RequestResponseModel;
+using MyOwnPortfolio.ApiService.Models.RequestResponseModels;
 using MyOwnPortfolio.ApiService.Models.SwaggerExamples;
 using Swashbuckle.AspNetCore.Annotations;
 using Swashbuckle.AspNetCore.Filters;

@@ -7,7 +7,7 @@ namespace MyOwnPortfolio.Web.Components.Pages.Admin
 {
     public partial class Login
     {
-        [Inject] private AuthAPIClient ApiClient { get; set; }
+        [Inject] private AuthAPIClient ApiClient { get; set; } = default!;
 
         [SupplyParameterFromForm]
         private LoginRequestModel loginRequest { get; set; } = new LoginRequestModel();

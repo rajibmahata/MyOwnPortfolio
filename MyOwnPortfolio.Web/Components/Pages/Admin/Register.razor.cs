@@ -6,7 +6,7 @@ namespace MyOwnPortfolio.Web.Components.Pages.Admin
 {
     public partial class Register
     {
-        [Inject] private AuthAPIClient ApiClient { get; set; }
+        [Inject] private AuthAPIClient ApiClient { get; set; } = default!;
         [SupplyParameterFromForm]
         private RegistrationRequestModel registerRequest { get; set; } = new RegistrationRequestModel
         {

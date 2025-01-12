@@ -1,6 +1,6 @@
-﻿using MyOwnPortfolio.ApiService.Entities.RequestModel;
+﻿using MyOwnPortfolio.ApiService.Models.RequestResponseModel;
 
-namespace MyOwnPortfolio.ApiService.Entities.SwaggerExamples
+namespace MyOwnPortfolio.ApiService.Models.SwaggerExamples
 {
     public class LoginRequestExample : Swashbuckle.AspNetCore.Filters.IExamplesProvider<LoginRequestModel>
     {
@@ -15,5 +15,5 @@ namespace MyOwnPortfolio.ApiService.Entities.SwaggerExamples
         }
     }
 
-   
+
 }

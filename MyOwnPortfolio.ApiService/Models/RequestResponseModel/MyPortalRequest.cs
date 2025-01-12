@@ -1,4 +1,4 @@
-﻿namespace MyOwnPortfolio.ApiService.Entities.RequestModel
+﻿namespace MyOwnPortfolio.ApiService.Models.RequestResponseModel
 {
     public class MyPortalRequest
     {

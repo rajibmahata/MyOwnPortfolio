@@ -2,8 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MyOwnPortfolio.ApiService.Entities;
-using MyOwnPortfolio.ApiService.Entities.RequestModel;
-using MyOwnPortfolio.ApiService.Entities.SwaggerExamples;
+using MyOwnPortfolio.ApiService.Models.RequestResponseModel;
+using MyOwnPortfolio.ApiService.Models.SwaggerExamples;
 using Swashbuckle.AspNetCore.Annotations;
 using Swashbuckle.AspNetCore.Filters;
 using System;
@@ -76,7 +76,7 @@ namespace MyOwnPortfolio.ApiService.Controllers
             {
                 MyPortal myPortal = new MyPortal()
                 {
-                    ID = Utility.Utility.GenerateUniqueNumber(),
+                    //ID = Utility.Utility.GenerateUniqueNumber(),
                     Username = myportalRequest.Username,
                     Passwordhash = myportalRequest.Password,
                    

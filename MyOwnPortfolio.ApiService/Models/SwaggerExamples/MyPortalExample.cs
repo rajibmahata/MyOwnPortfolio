@@ -1,8 +1,8 @@
-﻿using MyOwnPortfolio.ApiService.Entities.RequestModel;
+﻿using MyOwnPortfolio.ApiService.Models.RequestResponseModel;
 
-namespace MyOwnPortfolio.ApiService.Entities.SwaggerExamples
+namespace MyOwnPortfolio.ApiService.Models.SwaggerExamples
 {
-    public class RegistrationRequestExample : Swashbuckle.AspNetCore.Filters.IExamplesProvider<MyPortalRequest>
+    public class MyPortalExample : Swashbuckle.AspNetCore.Filters.IExamplesProvider<MyPortalRequest>
     {
         public MyPortalRequest GetExamples()
         {
@@ -16,5 +16,5 @@ namespace MyOwnPortfolio.ApiService.Entities.SwaggerExamples
         }
     }
 
-   
+
 }

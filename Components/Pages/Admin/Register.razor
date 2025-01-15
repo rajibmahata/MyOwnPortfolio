@@ -10,7 +10,7 @@
             <div class="card shadow-lg border-0 rounded-lg mt-5">
                 <div class="card-header"><h3 class="text-center font-weight-light my-4">Create Account</h3></div>
                 <div class="card-body">
-                    <EditForm Model="@registrationModel" OnValidSubmit="@HandleRegistration" FormName="@("registration")">
+                    <EditForm Model="@registrationModel" OnValidSubmit="@HandleRegistration" >
                         <DataAnnotationsValidator />
                         <ValidationSummary />
 
@@ -24,7 +24,6 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating">
-
                                     <InputText id="LastName" class="form-control" @bind-Value="registrationModel.LastName" placeholder="Enter your last name" />
                                     <ValidationMessage For="@(() => registrationModel.LastName)" />
                                     <label for="LastName">LastName:</label>
@@ -51,7 +50,6 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating mb-3 mb-md-0">
-
                                     <InputText id="ConfirmPassword" class="form-control" @bind-Value="registrationModel.ConfirmPassword" type="password" placeholder="Create a ConfirmPassword" />
                                     <ValidationMessage For="@(() => registrationModel.ConfirmPassword)" />
                                     <label for="password">Confirm Password:</label>
@@ -76,7 +74,7 @@
                         <div class="mt-4 mb-0">
                             <div class="d-grid"><button class="btn btn-primary btn-block" type="submit" id="btncreateaccount">Create Account</button></div>
                         </div>
-                   </EditForm>
+                    </EditForm>
                 </div>
                 <div class="card-footer text-center py-3">
                     <div class="small"><a href="/admin/login">Have an account? Go to login</a></div>
@@ -85,6 +83,7 @@
         </div>
     </div>
 </div>
-@code {
 
+@code {
+    
 }

@@ -1,11 +1,4 @@
 ﻿@using MyOwnPortfolio.Services
-@* <Router AppAssembly="typeof(Program).Assembly">
-    <Found Context="routeData">
-        <RouteView RouteData="routeData" DefaultLayout="typeof(Layout.MyPortfolioLayout)" />
-        <FocusOnNavigate RouteData="routeData" Selector="h1" />
-    </Found>
-</Router> *@
-
 
 @inject LayoutService LayoutService
 
@@ -24,9 +17,7 @@
     </Router>
 </CascadingValue>
 
-
 @code {
-   
     private Type CurrentLayout = typeof(Layout.MyPortfolioLayout);
 
     protected override void OnInitialized()
@@ -44,5 +35,4 @@
     {
         LayoutService.OnLayoutChanged -= HandleLayoutChange;
     }
-
 }

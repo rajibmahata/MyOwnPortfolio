@@ -1,11 +1,14 @@
 ﻿using Microsoft.AspNetCore.Components;
+using MyOwnPortfolio.Web.Components.Layout;
 using MyOwnPortfolio.Web.Models.RequestResponseModels;
 using MyOwnPortfolio.Web.Services;
 
 namespace MyOwnPortfolio.Web.Components.Pages.Admin
 {
-    public partial class Register
+    public partial class Register : IDisposable
     {
+        [Inject] private LayoutService layoutService { get; set; } = default!;
+        private bool isDisposed = false;
         [Inject] private AuthAPIClient ApiClient { get; set; } = default!;
         [SupplyParameterFromForm]
         private RegistrationRequestModel registerRequest { get; set; } = new RegistrationRequestModel
@@ -16,7 +19,11 @@ namespace MyOwnPortfolio.Web.Components.Pages.Admin
             Email = string.Empty,
             ContactNumber = string.Empty
         };
-
+        protected override void OnInitialized()
+        {
+            layoutService.SetLayout(typeof(AdminLayout));
+            isDisposed = false;
+        }
         private async Task HandleRegister()
         {
             try
@@ -29,6 +36,13 @@ namespace MyOwnPortfolio.Web.Components.Pages.Admin
             {
                 // Handle error (e.g., show error message to the user)
                 Console.WriteLine("Registration failed: " + ex.Message);
+            }
+        }
+        public void Dispose()
+        {
+            if (!isDisposed)
+            {
+                isDisposed = true;
             }
         }
     }

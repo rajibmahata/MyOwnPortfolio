@@ -22,6 +22,8 @@ builder.Services.AddHttpClient<WeatherApiClient>(client =>
 // Register HttpClient and ApiClient
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://localhost:7301") });
 builder.Services.AddScoped<AuthAPIClient>();
+builder.Services.AddScoped<LayoutService>();
+builder.Services.AddScoped<ChatGPTAIService>();
 
 var app = builder.Build();
 

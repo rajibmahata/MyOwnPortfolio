@@ -1,39 +1,67 @@
 ﻿@page "/admin/register"
+@layout MyOwnPortfolio.Web.Components.Layout.AdminLayout
 
+<DynamicLayout UseMainLayout="false">
 
-<h3>Register</h3>
+    <PageTitle>Register</PageTitle>
 
-<EditForm Model="@registerRequest" OnValidSubmit="HandleRegister" FormName="@("register")">
-    <DataAnnotationsValidator />
-    <ValidationSummary />
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-7">
+                <div class="card shadow-lg border-0 rounded-lg mt-5">
+                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Create Account</h3></div>
+                    <div class="card-body">
 
-    <div class="form-group">
-        <label for="username">Username</label>
-        <InputText id="username" class="form-control" @bind-Value="registerRequest.Username" />
+                        <EditForm Model="@registerRequest" OnValidSubmit="HandleRegister" FormName="@("register")">
+                            <DataAnnotationsValidator />
+                                                      
+                            <div class="form-floating mb-3">
+                                <InputText id="Username" class="form-control" @bind-Value="registerRequest.Username" placeholder="Username" />
+                                <ValidationMessage For="@(() => registerRequest.Username)" />
+                                <label for="Email">Username</label>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3 mb-md-0">
+                                        <InputText id="password" class="form-control" @bind-Value="registerRequest.Password" type="password" placeholder="Create a password" />
+                                        <ValidationMessage For="@(() => registerRequest.Password)" />
+                                        <label for="password">Password</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3 mb-md-0">
+                                        <InputText id="ConfirmPassword" class="form-control" @bind-Value="registerRequest.ConfirmPassword" type="password" placeholder="Create a ConfirmPassword" />
+                                        <ValidationMessage For="@(() => registerRequest.ConfirmPassword)" />
+                                        <label for="password">Confirm Password</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <InputText id="Email" class="form-control" @bind-Value="registerRequest.Email" placeholder="name@example.com" />
+                                <ValidationMessage For="@(() => registerRequest.Email)" />
+                                <label for="Email">Email</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <InputText id="ContactNumber" class="form-control" @bind-Value="registerRequest.ContactNumber" placeholder="ContactNumber" />
+                                <ValidationMessage For="@(() => registerRequest.ContactNumber)" />
+                                <label for="ContactNumber">ContactNumber</label>
+                            </div>
+                           
+                            <div class="mt-4 mb-0">
+                                <div class="d-grid"><button class="btn btn-primary btn-block" type="submit" id="btncreateaccount">Create Account</button></div>
+                            </div>
+                        </EditForm>
+                    </div>
+                    <div class="card-footer text-center py-3">
+                        <div class="small"><a href="/admin/login">Have an account? Go to login</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="form-group">
-        <label for="password">Password</label>
-        <InputText id="password" type="password" class="form-control" @bind-Value="registerRequest.Password" />
-    </div>
+</DynamicLayout>
 
-    <div class="form-group">
-        <label for="name">Name</label>
-        <InputText id="name" class="form-control" @bind-Value="registerRequest.Name" />
-    </div>
-
-    <div class="form-group">
-        <label for="email">Email</label>
-        <InputText id="email" class="form-control" @bind-Value="registerRequest.Email" />
-    </div>
-
-    <div class="form-group">
-        <label for="contactNumber">Contact Number</label>
-        <InputText id="contactNumber" class="form-control" @bind-Value="registerRequest.ContactNumber" />
-    </div>
-
-    <button type="submit" class="btn btn-primary">Register</button>
-</EditForm>
 
 @code {
    

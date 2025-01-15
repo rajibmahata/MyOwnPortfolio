@@ -1,0 +1,37 @@
+﻿@inherits LayoutComponentBase
+
+@code {
+    [Parameter]
+    public bool UseMainLayout { get; set; } = true;
+
+    private RenderFragment GetLayout()
+    {
+        if (UseMainLayout)
+        {
+            return builder =>
+            {
+                builder.OpenComponent<MainLayout>(0);
+                builder.AddAttribute(1, "ChildContent", (RenderFragment)((builder2) =>
+                {
+                    builder2.AddContent(2, Body);
+                }));
+                builder.CloseComponent();
+            };
+        }
+        else
+        {
+            return builder =>
+            {
+                builder.OpenComponent<AdminLayout>(0);
+                builder.AddAttribute(1, "ChildContent", (RenderFragment)((builder2) =>
+                {
+                    builder2.AddContent(2, Body);
+                }));
+                builder.CloseComponent();
+            };
+        }
+    }
+}
+
+@* Render the selected layout *@
+@((RenderFragment)GetLayout())

@@ -1,0 +1,71 @@
+﻿@page "/admin/MyPortfolioSettings"
+@page "/admin/MyPortfolioSettings/{id:int}"
+@using MyOwnPortfolio.Web.Components.Layout
+
+@layout MyOwnPortfolio.Web.Components.Layout.AdminLayout
+
+<DynamicLayout UseMainLayout="false">
+    <PageTitle>MyPortfolioSettings</PageTitle>
+
+    <AdminNavMenu></AdminNavMenu>
+    <div id="layoutSidenav">
+       
+        <AdminLayoutSideNav></AdminLayoutSideNav>
+
+        <div id="layoutSidenav_content">
+          
+                <div class="container-fluid px-4">
+                <h1 class="mt-4">MyPortfolioSettings</h1>
+                    <ol class="breadcrumb mb-4">
+                    <li class="breadcrumb-item active">MyPortfolioSettings</li>
+                    </ol>
+                   
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <i class="fas fa-chart-area me-1"></i>
+                                   About Me
+                                </div>
+                                <div class="card-body">
+
+                                <form>
+                                    <div class="form-floating mb-3">
+                                        <input class="form-control" id="inputEmail" type="email" placeholder="name@example.com" />
+                                        <label for="inputEmail">Email address</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input class="form-control" id="inputPassword" type="password" placeholder="Password" />
+                                        <label for="inputPassword">Password</label>
+                                    </div>
+                                    <div class="form-check mb-3">
+                                        <input class="form-check-input" id="inputRememberPassword" type="checkbox" value="" />
+                                        <label class="form-check-label" for="inputRememberPassword">Remember Password</label>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
+                                        <a class="small" href="password.html">Forgot Password?</a>
+                                        <a class="btn btn-primary" href="index.html">Login</a>
+                                    </div>
+                                </form>
+                                </div>
+                            </div>
+                        </div>
+                      
+                    </div>
+                   
+                </div>
+           
+            
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="js/scripts.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+    <script src="assets/demo/chart-area-demo.js"></script>
+    <script src="assets/demo/chart-bar-demo.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+    <script src="js/datatables-simple-demo.js"></script>
+</DynamicLayout>
+@code {
+    
+}

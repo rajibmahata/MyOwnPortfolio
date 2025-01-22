@@ -7,7 +7,7 @@ namespace MyOwnPortfolio.Web.Components.Pages.Admin
     {
         [Inject] private ChatGPTAIService chatGPTAIService { get; set; } = default!;
         [Parameter]
-        public int? Id { get; set; }
+        public string? Id { get; set; }
 
         protected override void OnInitialized()
         {

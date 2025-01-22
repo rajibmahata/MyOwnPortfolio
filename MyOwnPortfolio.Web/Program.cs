@@ -19,9 +19,21 @@ builder.Services.AddHttpClient<WeatherApiClient>(client =>
         client.BaseAddress = new("https+http://apiservice");
     });
 
+builder.Services.AddHttpClient<AboutMeApiClient>(client =>
+{
+    client.BaseAddress = new("https+http://apiservice");
+});
+
+builder.Services.AddHttpClient<AuthAPIClient>(client =>
+{
+    client.BaseAddress = new Uri("https://localhost:7301");
+});
+
+
 // Register HttpClient and ApiClient
-builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://localhost:7301") });
-builder.Services.AddScoped<AuthAPIClient>();
+//builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://localhost:7301") });
+//builder.Services.AddScoped<AuthAPIClient>();
+
 builder.Services.AddScoped<LayoutService>();
 builder.Services.AddScoped<ChatGPTAIService>();
 

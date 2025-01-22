@@ -17,27 +17,60 @@ namespace MyOwnPortfolio.ApiService.Controllers
         {
             _context = context;
         }
-        // GET: api/<AboutMeController>
+
+        /// <summary>
+        /// Gets all AboutMe entries.
+        /// </summary>
+        /// <returns>A list of AboutMe entries.</returns>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<AboutMe>>> GetAboutMes()
         {
             try
             {
                 return await _context.About.ToListAsync();
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 throw ex;
             }
         }
 
-        // GET api/<AboutMeController>/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<AboutMe>> GetAboutMe(int id)
+        /// <summary>
+        /// Gets the active AboutMe entry for a specific portal.
+        /// </summary>
+        /// <param name="PortalID">The portal ID.</param>
+        /// <returns>The active AboutMe entry.</returns>
+        [HttpGet("{PortalID}")]
+        public async Task<ActionResult<AboutMe>> GetAboutMeByPortalID(string PortalID)
+        {
+            try
+            {
+                var aboutMe = await _context.About.Where(x => x.MyPortalID == PortalID).ToListAsync();
+                if (aboutMe == null || !aboutMe.Any(x => x.IsActive))
+                {
+                    return NotFound();
+                }
+                return Ok(aboutMe.FirstOrDefault(x => x.IsActive));
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        /// <summary>
+        /// Gets a specific AboutMe entry by portal ID and entry ID.
+        /// </summary>
+        /// <param name="PortalID">The portal ID.</param>
+        /// <param name="id">The entry ID.</param>
+        /// <returns>The AboutMe entry.</returns>
+        [HttpGet("{PortalID}/{id}")]
+        public async Task<ActionResult<AboutMe>> GetAboutMe(string PortalID, string id)
         {
             try
             {
                 var aboutMe = await _context.About.FindAsync(id);
-                if (aboutMe == null)
+                if (aboutMe == null || !aboutMe.IsActive)
                 {
                     return NotFound();
                 }
@@ -45,12 +78,15 @@ namespace MyOwnPortfolio.ApiService.Controllers
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }
 
-        // POST api/<AboutMeController>
+        /// <summary>
+        /// Creates a new AboutMe entry.
+        /// </summary>
+        /// <param name="aboutMe">The AboutMe entry to create.</param>
+        /// <returns>The created AboutMe entry.</returns>
         [HttpPost]
         public async Task<ActionResult<AboutMe>> PostAboutMe(AboutMe aboutMe)
         {
@@ -58,17 +94,20 @@ namespace MyOwnPortfolio.ApiService.Controllers
             {
                 _context.About.Add(aboutMe);
                 await _context.SaveChangesAsync();
-                return CreatedAtAction(nameof(GetAboutMe), new { id = aboutMe.ID }, aboutMe);
+                return CreatedAtAction(nameof(GetAboutMeByPortalID), new { id = aboutMe.ID }, aboutMe);
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }
 
-
-        // PUT api/<AboutMeController>/5
+        /// <summary>
+        /// Updates an existing AboutMe entry.
+        /// </summary>
+        /// <param name="id">The ID of the entry to update.</param>
+        /// <param name="aboutMe">The updated AboutMe entry.</param>
+        /// <returns>No content.</returns>
         [HttpPut("{id}")]
         public async Task<IActionResult> PutAboutMe(string id, AboutMe aboutMe)
         {
@@ -98,7 +137,11 @@ namespace MyOwnPortfolio.ApiService.Controllers
             return NoContent();
         }
 
-        // DELETE api/<AboutMeController>/5
+        /// <summary>
+        /// Deletes an AboutMe entry.
+        /// </summary>
+        /// <param name="id">The ID of the entry to delete.</param>
+        /// <returns>No content.</returns>
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProduct(int id)
         {
@@ -116,7 +159,6 @@ namespace MyOwnPortfolio.ApiService.Controllers
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }

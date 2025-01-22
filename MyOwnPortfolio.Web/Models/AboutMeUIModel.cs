@@ -6,6 +6,10 @@
     public class AboutMeUIModel
     {
         /// <summary>
+        /// Gets or sets the ID.
+        /// </summary>
+        public  string? ID { get; set; }
+        /// <summary>
         /// Gets or sets the name.
         /// </summary>
         public required string Name { get; set; }

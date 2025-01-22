@@ -16,33 +16,33 @@
                             <DataAnnotationsValidator />
                                                       
                             <div class="form-floating mb-3">
-                                <InputText id="Username" class="form-control" @bind-Value="registerRequest.Username" placeholder="Username" />
+                                <InputText id="Username" class="form-control" @bind-Value="registerRequest.Username"  />
                                 <ValidationMessage For="@(() => registerRequest.Username)" />
                                 <label for="Email">Username</label>
                             </div>
                             <div class="row mb-3">
                                 <div class="col-md-6">
                                     <div class="form-floating mb-3 mb-md-0">
-                                        <InputText id="password" class="form-control" @bind-Value="registerRequest.Password" type="password" placeholder="Create a password" />
+                                        <InputText id="password" class="form-control" @bind-Value="registerRequest.Password" type="password"  />
                                         <ValidationMessage For="@(() => registerRequest.Password)" />
                                         <label for="password">Password</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating mb-3 mb-md-0">
-                                        <InputText id="ConfirmPassword" class="form-control" @bind-Value="registerRequest.ConfirmPassword" type="password" placeholder="Create a ConfirmPassword" />
+                                        <InputText id="ConfirmPassword" class="form-control" @bind-Value="registerRequest.ConfirmPassword" type="password"  />
                                         <ValidationMessage For="@(() => registerRequest.ConfirmPassword)" />
                                         <label for="password">Confirm Password</label>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-floating mb-3">
-                                <InputText id="Email" class="form-control" @bind-Value="registerRequest.Email" placeholder="name@example.com" />
+                                <InputText id="Email" class="form-control" @bind-Value="registerRequest.Email" />
                                 <ValidationMessage For="@(() => registerRequest.Email)" />
                                 <label for="Email">Email</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <InputText id="ContactNumber" class="form-control" @bind-Value="registerRequest.ContactNumber" placeholder="ContactNumber" />
+                                <InputText id="ContactNumber" class="form-control" @bind-Value="registerRequest.ContactNumber"/>
                                 <ValidationMessage For="@(() => registerRequest.ContactNumber)" />
                                 <label for="ContactNumber">ContactNumber</label>
                             </div>

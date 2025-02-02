@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Identity.Data;
 using MyOwnPortfolio.Web.Components.Layout;
 using MyOwnPortfolio.Web.Models;
 using MyOwnPortfolio.Web.Models.RequestResponseModels;
@@ -37,6 +38,19 @@ namespace MyOwnPortfolio.Web.Components.Pages.Admin
             }
 
             isDisposed = false;
+        }
+
+        private async Task SubmitAboutMe()
+        {
+            try
+            {
+               
+            }
+            catch (Exception ex)
+            {
+                // Handle error (e.g., show error message to the user)
+                Console.WriteLine("SubmitAboutMe failed: " + ex.Message);
+            }
         }
         public void Dispose()
         {

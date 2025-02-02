@@ -8,11 +8,43 @@
         </div>
         <!-- Card Body -->
         <div class="card-body">
-            <EditForm Model="@aboutMeUIModel" OnValidSubmit="aboutMeUIModel" FormName="@("main")">
+            <EditForm Model="@aboutMeUIModel" OnValidSubmit="SubmitAboutMe" FormName="@("main")">
                 <DataAnnotationsValidator />
                 <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                    <label for="exampleFormControlName" class="form-label">Name</label>
+                    <InputText id="name" class="form-control" @bind-Value="aboutMeUIModel!.Name" placeholder="name" />
+                    <ValidationMessage For="@(() => aboutMeUIModel!.Name)" />
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlEmail" class="form-label">Email address</label>
+                    <InputText id="email" class="form-control" @bind-Value="aboutMeUIModel!.Email" placeholder="name@example.com" />
+                    <ValidationMessage For="@(() => aboutMeUIModel!.Email)" />
+                </div>
+
+                  <div class="mb-3">
+                    <label for="exampleFormControlAddress1" class="form-label">Address 1</label>
+                    <InputText id="email" class="form-control" @bind-Value="aboutMeUIModel!.Address1" placeholder="address 1" />
+                    <ValidationMessage For="@(() => aboutMeUIModel!.Address1)" />
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlAddress2" class="form-label">Address 2</label>
+                    <InputText id="email" class="form-control" @bind-Value="aboutMeUIModel!.Address2" placeholder="address 2" />
+                    <ValidationMessage For="@(() => aboutMeUIModel!.Address2)" />
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlAddress2" class="form-label">City </label>
+                    <InputText id="email" class="form-control" @bind-Value="aboutMeUIModel!.City" placeholder="City" />
+                    <ValidationMessage For="@(() => aboutMeUIModel!.City)" />
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlState" class="form-label">State </label>
+                    <InputText id="email" class="form-control" @bind-Value="aboutMeUIModel!.State" placeholder="City" />
+                    <ValidationMessage For="@(() => aboutMeUIModel!.State)" />
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlZip" class="form-label">Zip </label>
+                    <InputText id="email" class="form-control" @bind-Value="aboutMeUIModel!.Zip" placeholder="City" />
+                    <ValidationMessage For="@(() => aboutMeUIModel!.Zip)" />
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>

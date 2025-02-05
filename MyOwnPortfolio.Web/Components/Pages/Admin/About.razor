@@ -52,6 +52,11 @@
                     <ValidationMessage For="@(() => aboutMeUIModel!.Country)" />
                 </div>
                 <div class="mb-3">
+                    <label for="exampleFormControlZip" class="form-label">Zip </label>
+                    <InputText id="Country" class="form-control" @bind-Value="aboutMeUIModel!.Zip" placeholder="Zip" />
+                    <ValidationMessage For="@(() => aboutMeUIModel!.Zip)" />
+                </div>
+                <div class="mb-3">
                     <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                 </div>
